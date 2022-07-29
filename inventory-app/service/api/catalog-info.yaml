@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: inventory-api
+  description: API for inventory-service
+  tags:
+    - grpc
+spec:
+  type: grpc
+  lifecycle: production
+  owner: group:guests
+  system: inventory-app
+  definition: |
+    syntax = "proto3";
+
+    service InventoryService {
+      rpc Inventory (InventoryMessage) returns (InventoryMessage) {};
+    }
+
+    message InventoryMessage {
+      string inventoryName = 1;
+    };
